@@ -5,7 +5,12 @@
  * @version 1.0
  */
 public class FiveMinCommand implements Command {
+    private StopWatch watch;
     public FiveMinCommand (StopWatch watch) {
+        
+    }
+    @Override
+    public void execute() {
         
     }
 }
