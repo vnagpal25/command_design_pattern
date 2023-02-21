@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 /**
- * @author vnagpal
+ * @author vnagpal (vnagpal25)
  *         InputHandler class
  */
 public class InputHandler {
