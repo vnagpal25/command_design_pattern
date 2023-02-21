@@ -6,7 +6,7 @@ import java.util.HashMap;
  */
 public class InputHandler {
   // initializes hashmap
-  private HashMap<String, Command> commands = new HashMap<String, Command>();
+  private HashMap<String, Command> commands;
 
   /**
    * Constructor matches inputs to commands
@@ -14,6 +14,7 @@ public class InputHandler {
    * @param watch given stopwatch that will be given to the commands
    */
   public InputHandler(StopWatch watch) {
+    commands = new HashMap<String, Command>();
     commands.put("1", new OneMinCommand(watch));
     commands.put("5", new FiveMinCommand(watch));
     commands.put("30", new ThirtySecCommand(watch));
