@@ -4,55 +4,51 @@ import java.util.concurrent.TimeUnit;
  * @author Jagger
  */
 public class StopWatch {
-    /**
-     * Creates a new StopWatch
-     */
     public StopWatch() {
         
     }
-    /**
-     * A helper method to convert seconds to minutes and seconds and then count down
-     * @param time
-     */
-    private void helper(int time) {
-        for (int i = time; i >= 0; i--) {
-            int minutes = i / 60;
-            int seconds = i % 60;
+    private void countDown(int seconds) {
+        int minutes = seconds / 60;
+        int remainingSeconds = seconds % 60;
+        for (int i = 0; i < seconds; i++) {
             System.out.print("\033[H\033[2J");
             System.out.flush();
-            System.out.print("0"+minutes+":");
-            if (i == 0) {
-                System.out.println("00");
-            } else if (i < 10) {
-                System.out.println("0" + seconds);
+            if (minutes < 10) {
+                System.out.print("0" + minutes + ":");
             } else {
-                System.out.println(seconds);
+                System.out.print(minutes + ":");
+            }
+            if (remainingSeconds < 10) {
+                System.out.println("0" + remainingSeconds);
+            } else {
+                System.out.println(remainingSeconds);
             }
             try {
                 TimeUnit.MILLISECONDS.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            remainingSeconds--;
+            if (remainingSeconds < 0) {
+                minutes--;
+                remainingSeconds = 59;
+            }
         }
+        
     }
-
-
-    /**
-     * Starts a timer for one minute
-     */
     public void countDownOneMin() {
-        helper(60);
+        countDown(60);
     }
     /**
      * Starts a timer for five minutes
      */
     public void countDownFiveMin() {
-        helper(300);
+        countDown(300);
     }
     /**
      * Starts a timer for thirty seconds
      */
     public void countDownThirtySec() {
-        helper(30);
+        countDown(30);
     }
 }
