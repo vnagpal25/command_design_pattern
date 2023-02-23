@@ -7,7 +7,7 @@ public class StopWatch {
     public StopWatch() {
         
     }
-    public void countDown(int seconds) {
+    private void countDown(int seconds) {
         int minutes = seconds / 60;
         int remainingSeconds = seconds % 60;
         for (int i = 0; i < seconds; i++) {
