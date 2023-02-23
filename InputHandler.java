@@ -26,8 +26,10 @@ public class InputHandler {
    * @return boolean based on valid input 1, 5, or 30
    */
   public boolean inputEntered(String data) {
-    return data.equals("1")
-        || data.equals("5")
-        || data.equals("30");
+    if( data.equals("1") || data.equals("5") || data.equals("30")) {
+      commands.get(data).execute();
+      return true;
+    }
+    return false;
   }
 }
